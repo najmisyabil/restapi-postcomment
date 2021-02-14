@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class SearchByKeywords extends FormRequest
+class FilterByFields extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,11 @@ class SearchByKeywords extends FormRequest
     public function rules()
     {
         return [
-            'keywords' => 'required|array',
-            'keywords.*' => 'required|string',
+            'postId' => 'nullable|integer',
+            'id' => 'nullable|integer',
+            'name' => 'nullable|string',
+            'email' => 'nullable|email',
+            'body' => 'nullable|string',
         ];
     }
 
