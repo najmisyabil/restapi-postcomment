@@ -35,6 +35,6 @@ class CommentRepository
             );
         }
 
-        return $response;
+        return $response->json();
     }
 }
