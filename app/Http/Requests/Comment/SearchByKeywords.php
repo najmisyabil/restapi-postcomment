@@ -37,7 +37,7 @@ class SearchByKeywords extends FormRequest
             response()->json([
                 'success' => false,
                 'message' => $v->errors()->first(),
-            ])
+            ], 422)
         );
     }
 }

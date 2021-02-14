@@ -11,12 +11,17 @@ class CommentController extends Controller
     public function search(SearchByKeywords $request, CommentRepository $repo)
     {
         $keywords = $request->validated()['keywords'];
-        $comments = $repo->get()->json();
+        $comments = $repo->get();
 
         // Remove comments that does not contain keywords in body
-        foreach ($comments as $key => $comment) {
-            if (!Str::contains($comment['body'], $keywords))
+        foreach ($comments as $key => &$comment) {
+            if (!Str::contains($comment['body'], $keywords)) {
                 unset($comments[$key]);
+                continue;
+            }
+
+            // Filter out column name and email
+            unset($comment['name'], $comment['email']);
         }
 
         $count = count($comments);

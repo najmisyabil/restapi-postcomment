@@ -35,6 +35,6 @@ class PostRepository
             );
         }
 
-        return $response;
+        return $response->json();
     }
 }
