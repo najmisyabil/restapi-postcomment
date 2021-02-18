@@ -22,7 +22,7 @@
     > composer install
 
 
-5. After the installation is finished, run database migration and seeder to populate the users table with some random users
+5. After the installation is finished, run database migration and seeder to populate the users table with some users
     > php artisan migrate && php artisan db:seed
 
 
