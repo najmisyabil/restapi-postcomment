@@ -50,4 +50,13 @@ class CommentService
 
         return empty($arr);
     }
+
+    public function countCommentsBasedOnPostId(array $comments): array
+    {
+        $comments = collect($comments)->groupBy('postId')->toArray();
+
+        return array_map(function ($item) {
+            return count($item);
+        }, $comments);
+    }
 }
